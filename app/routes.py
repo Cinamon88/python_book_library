@@ -36,4 +36,20 @@ def add_book():
         b.authors.append(a2)
         db.session.add(a2)
     db.session.commit()
-    return redirect('/')   
+    return redirect('/')
+
+@app.route('/delete', methods = ['GET'])
+def delete():
+    return render_template("delete.html")
+
+@app.route('/delete', methods = ['POST'])
+def delete_book():
+    title = request.form.get("title")
+    msg = None
+    if Book.query.filter(Book.title == title).first():
+        db.session.delete(Book.query.filter(Book.title == title).first())
+        db.session.commit()
+        msg = 'Book deleted'
+    else:
+        msg = 'Book not found'
+    return render_template('delete.html', msg = msg)
