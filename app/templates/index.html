@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang= "en">
+    <head>
+        <meta charset = "utf-8">
+        <title>Library 2.0</title>
+        <link rel = "stylesheet" href = "{{url_for('static', filename = 'style.css')}}">
+    </head>
+    <body>
+        <h1 class = "intro">My Library 2.0</h1></br>
+        <table class = "menu">
+            <tr>
+                <td><a href = "./add">Add: </a></td>
+                <td><a href = "./delete">Delete: </a></td>
+                <td><a href = "./">Show all:</a></td>
+                <td><a href = "./find_book">Update:</a></td>
+            </tr>
+        </table>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

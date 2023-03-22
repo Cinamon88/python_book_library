@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block content %}
+<p>
+    <form action = "" method = "POST">
+        Title: <input type = "text" id = "title" name = "title"><br>
+        <input type = "submit" value = "delete">
+    </form>
+</p>
+    {% if msg %}
+        {{msg}}
+    {% endif %}
+{% endblock %}
