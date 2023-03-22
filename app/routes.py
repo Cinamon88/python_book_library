@@ -49,9 +49,9 @@ def delete_book():
     if Book.query.filter(Book.title == title).first():
         db.session.delete(Book.query.filter(Book.title == title).first())
         db.session.commit()
-        msg = 'Book deleted'
+        msg = 'Book deleted!'
     else:
-        msg = 'Book not found'
+        msg = 'Book not found!'
     return render_template('delete.html', msg = msg)
 
 @app.route('/find_book', methods = ['GET'])
