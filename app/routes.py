@@ -60,8 +60,8 @@ def find():
 
 @app.route('/find_book', methods = ['POST'])
 def find_book():
-    title = request.form.get("title")
-    b = Book.query.filter(Book.title == title).first()
+    id = request.form.get("id")
+    b = Book.query.filter(Book.id == id).first()
     title = b.title
     authorName = b.authors.all()[0].name
     authorLastName = b.authors.all()[0].lastName
@@ -72,10 +72,11 @@ def find_book():
         authorName2 = ""
         authorLastName2 = ""
     
-    return render_template('update.html', id = id, title = title, authorName = authorName, authorName2 = authorName2, authorlastName = authorLastName, authorLastName2 = authorLastName2, available = b.is_available)
+    return render_template('update.html', id = id, title = title, authorName = authorName, authorName2 = authorName2, authorLastName = authorLastName, authorLastName2 = authorLastName2, available = b.is_available)
 
 @app.route("/update", methods =['POST'])
 def update_book():
+    id = request.form.get('id')
     title = request.form.get("title")
     authorName = request.form.get("authorName")
     authorLastName = request.form.get("authorLastName")
@@ -87,7 +88,7 @@ def update_book():
     else:
         available = False
     
-    b = Book.query.filter(Book.title == title).first()
+    b = Book.query.filter(Book.id == id).first()
     b.title = title
     b.is_available = available
     db.session.add(b)

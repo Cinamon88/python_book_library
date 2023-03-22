@@ -2,13 +2,14 @@
 {% block content %}
 <p>
     <form action = "/find_book" method = "POST">
-        Find a book: <input type = "text" id = "title" name = "title"><br>
+        Find book by ID: <input type = "text" id = "id" name = "id"><br>
         <input type = "submit" value = "find">
     </form>
 </p>
 {% if authorName %}
 <p>
     <form action = "/update" method = "POST">
+        ID:<input type = "text" id = "id" name = "id" value = {{id}}><br>
         Title: <input type = "text" id = "title" name = "title" value = {{title}}><br>
         Author name: <input type = "text" id = "authorName" name = "authorName" value = {{authorName}}><br>
         Author last name: <input type = "text" id = "authorLastName" name = "authorLastName" value = {{authorLastName}}><br>
